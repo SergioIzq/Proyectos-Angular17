@@ -1,31 +1,30 @@
-<div class="container">    
-    <div class="boton-crear">
-        <button routerLink="/new-post" routerLinkActive="active" type="button"
-            class="btn btn-success boton-principal">Create New Post</button>
-    </div>
-    <table class="table">
-            <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Body</th>
-                <th>Action</th>
-            </tr>
+<div class="container">
+  <div class="boton-crear">
+    <button routerLink="/new-post" routerLinkActive="active" type="button" class="btn btn-success boton-principal"> +
+      Crear Nuevo Post</button>
+  </div>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Action</th>
+    </tr>
 
-            @for (post of posts; track post.id){
-            <tr>
-                <td class="align-middle">{{ post.id }}</td>
-                <td class="align-middle">{{ post.title }}</td>
-                <td class="align-middle">{{ post.body }}</td>
+    @for (post of posts; track post.id){
+    <tr>
+      <td class="align-middle">{{ post.id }}</td>
+      <td class="align-middle">{{ post.title }}</td>
+      <td class="align-middle">{{ post.body }}</td>
 
-                <td>
-                    <div class="botones">
-                        <button class="btn btn-primary me-2" (click)="(post.id)">View</button>
-                        <button class="btn btn-warning me-2" (click)="(post.id)">Edit</button>
-                        <button class="btn btn-danger" (click)="deletePost(post.id)">Delete</button>
-                    </div>
-                </td>
-            </tr>
-            }
-    </table>
+      <td>
+        <div class="botones">
+          <button routerLink="/view-post/{{ post.id }}" routerLinkActive="active" type="button" class="btn btn-primary me-2">Ver</button>
+          <button routerLink="/update-post/{{post.id}}" routerLinkActive="active" type="button" class="btn btn-warning me-2">Editar</button>
+          <button class="btn btn-danger" (click)="eliminarPost(post.id)">Borrar</button>
+        </div>
+      </td>
+    </tr>
+    }
+  </table>
 </div>
-

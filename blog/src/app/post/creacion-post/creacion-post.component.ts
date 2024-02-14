@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { PostService } from '../post.service';
 import { Post } from '../post';
 
@@ -16,8 +16,8 @@ import { Post } from '../post';
 export class CreacionPostComponent {
 
   submitted = false;
-  
-  constructor(private _fb: FormBuilder, private postService:PostService) { }
+
+  constructor(private _fb: FormBuilder, private postService: PostService, private router: Router) { }
 
   registerForm = this._fb.group(
     {
@@ -32,36 +32,35 @@ export class CreacionPostComponent {
 
   onSubmit() {
     this.submitted = true;
-  
+
     // No enviar si el formulario no está correctamente validado
     if (this.registerForm.invalid) {
       return;
     }
     console.log(this.registerForm.value.title);
     console.log(this.registerForm.value.body);
-    // Inicializar newPost con un ID inicial de tipo number (puede ser null o undefined)
-    // const newPost: Post = {
-    //   id: null, 
-    //   title: this.registerForm.value.title,
-    //   body: this.registerForm.value.body
-    // };
-  
-    // this.postService.create(newPost).subscribe(
-    //   (response: any) => {
-    //     console.log('Post creado exitosamente:', response);
-  
-    //     // Asignar el ID obtenido de la respuesta al objeto newPost
-    //     newPost.id = response.id;
-  
-    //     console.log('ID del nuevo post guardado en newPost:', newPost.id);
-  
-    //     // Aquí podrías redirigir a la página de visualización de posts o realizar alguna otra acción
-    //   },
-    //   (error) => {
-    //     console.error('Error al crear el post:', error);
-    //   }
-    // );
-  }  
+    // Inicializar newPost con un ID inicial de tipo number
+    const newPost: Post = {
+      id: 0, // Id provisional ya que en create le asigno el que le corresponde
+      title: this.registerForm.value.title ? this.registerForm.value.title.toString() : '',
+      body: this.registerForm.value.body ? this.registerForm.value.body.toString() : ''
+    };
+
+    this.postService.create(newPost).subscribe(
+      (response: any) => {
+        console.log('Post creado exitosamente:', response);
+
+        // Asignar el ID obtenido de la respuesta al objeto newPost
+        newPost.id = response.id;
+
+        alert(`El post se ha creado correctamente: ID ${newPost.id}, Título: ${newPost.title}, Cuerpo: ${newPost.body}`);
+        this.router.navigate(['']);
+      },
+      (error) => {
+        console.error('Error al crear el post:', error);
+      }
+    );
+  }
 
   onReset() {
     this.submitted = false;

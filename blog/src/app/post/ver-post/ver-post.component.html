@@ -1,0 +1,22 @@
+<div class="container">
+  <h2>Ver Post</h2>
+  <button routerLink="" routerLinkActive="active" type="button" class="btn btn-info">Volver atrás</button>
+  <div class="container">
+    <form>
+
+      <div class="grupo-input1">
+
+        <label>Título</label>
+
+        <input type="text" formControlName="title" name="titleInput" class="form-control" id="titleInput"
+          autocomplete value="{{ title }}" readonly />
+      </div>
+
+      <div class="grupo-input2">
+        <label>Cuerpo del post</label>
+
+        <input type="text" formControlName="body" name="bodyInput" class="form-control" id="body" autocomplete value="{{ body }}" readonly />
+      </div>
+    </form>
+  </div>
+</div>

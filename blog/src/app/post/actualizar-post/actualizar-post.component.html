@@ -1,0 +1,42 @@
+<div class="container">
+  <h2>Actualizar</h2>
+  <button routerLink="" routerLinkActive="active" type="button" class="btn btn-info">Volver atrás</button>
+  <div class="container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+
+      <div class="grupo-input1">
+
+        <label>Título</label>
+
+        <input type="text" formControlName="title" name="titleInput" class="form-control" id="titleInput"
+        [ngClass]="{ 'is-valid': !f['title'].errors && (f['title'].dirty || f['title'].touched), 'is-invalid': f['title'].errors && (f['title'].dirty || f['title'].touched) }" autocomplete />
+
+
+          <div class="invalid-feedback" *ngIf="f['title'].invalid && (f['title'].dirty || f['title'].touched)">
+            <div *ngIf="f['title']?.errors?.['required']">
+              El titulo del post es obligatorio
+            </div>
+            <div *ngIf="f['title']?.errors?.['minlength']">
+              El título del post ha de tener al menos 3 caracteres
+            </div>
+          </div>
+        </div>
+
+      <div class="grupo-input2">
+        <label>Cuerpo del post</label>
+
+        <input type="text" formControlName="body" name="bodyInput" class="form-control" id="body"
+        [ngClass]="{ 'is-valid': !f['body'].errors && (f['body'].dirty || f['body'].touched), 'is-invalid': f['body'].errors && (f['body'].dirty || f['body'].touched) }" autocomplete />
+
+        <div class="invalid-feedback" *ngIf="f['body'].invalid && (f['body'].dirty || f['body'].touched)">
+          <div *ngIf="f['body']?.errors?.['required']">
+            El cuerpo es obligatorio
+          </div>
+        </div>
+      </div>
+      <div class="boton-submit">
+        <button type="submit" [disabled]="registerForm.invalid && !registerForm.touched" class="btn btn-primary">Actualizar Post</button>
+      </div>
+    </form>
+  </div>
+</div>

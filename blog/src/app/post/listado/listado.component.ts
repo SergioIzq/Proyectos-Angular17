@@ -32,10 +32,21 @@ export class ListadoComponent implements OnInit {
     );
   }
 
-  deletePost(id:number): void {
-    this.postService.delete(this.posts[id].id);
+  eliminarPost(id: number) {
+    this.postService.delete(id).subscribe(
+      (response: any) => {
+        alert(`Post borrado correctamente.`);
+        const index = this.posts.findIndex(post => post.id === id);
+        if (index !== -1) {
+          this.posts.splice(index, 1); // Eliminar el post del arreglo 'posts'
+        }
+      },
+      (error) => {
+        console.error('Error al borrar el post:', error);
+      }
+    );
   }
-  
+
 }
 
 
