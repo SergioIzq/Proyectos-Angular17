@@ -20,12 +20,8 @@ table {
     gap: 5px;
 
 }
-.container{
-    margin: auto;
-    max-width: 1000px;
-}
 
 .boton-crear {
-    margin-top: 20px;
-    margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

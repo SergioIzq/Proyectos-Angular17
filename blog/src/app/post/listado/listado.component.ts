@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Post } from '../post';
 import { PostService } from '../post.service';
+import { CreacionPostComponent } from '../creacion-post/creacion-post.component';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-listado',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CreacionPostComponent, RouterOutlet, RouterLinkActive, RouterLink],
   templateUrl: './listado.component.html',
   styleUrl: './listado.component.css'
 })
@@ -29,6 +31,11 @@ export class ListadoComponent implements OnInit {
       }
     );
   }
+
+  deletePost(id:number): void {
+    this.postService.delete(this.posts[id].id);
+  }
+  
 }
 
 

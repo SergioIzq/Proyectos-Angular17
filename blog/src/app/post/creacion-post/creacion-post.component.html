@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>Crear nuevo post</h2>
+  <button routerLink="" routerLinkActive="active" type="button" class="btn btn-info">Go back</button>
+  <div class="container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+      <label>Titulo</label>
+      <input type="text" formControlName="title" name="title" class="form-control"
+        [ngClass]="{ 'is-invalid': f['title'].errors }" autocomplete />
+
+      <div *ngIf="f['title'].errors" class="invalid-feedback">
+        <div *ngIf="f['title'].errors['required']">El nombre es obligatorio</div>
+        <div *ngIf="f['title'].errors['minlength']">
+          El titulo del post ha de tener al menos 3 caracteres
+        </div>
+      </div>
+
+      <label>Body</label>
+      <input type="text" formControlName="body" name="body" class="form-control"
+        [ngClass]="{ 'is-invalid': f['body'].errors }" autocomplete />
+      <div *ngIf="f['body'].errors" class="invalid-feedback">
+        <div *ngIf="f['body'].errors['required']">El email es obligatorio</div>
+        <div *ngIf="f['body'].errors['body']">El email debe de ser válido</div>
+      </div>
+      <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">Crear Post</button>
+    </form>

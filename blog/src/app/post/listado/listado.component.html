@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container">    
     <div class="boton-crear">
-        <button type="button" class="btn btn-success boton-principal">Create New Post</button>
+        <button routerLink="/new-post" routerLinkActive="active" type="button"
+            class="btn btn-success boton-principal">Create New Post</button>
     </div>
-
     <table class="table">
             <tr>
                 <th>ID</th>
@@ -21,11 +21,11 @@
                     <div class="botones">
                         <button class="btn btn-primary me-2" (click)="(post.id)">View</button>
                         <button class="btn btn-warning me-2" (click)="(post.id)">Edit</button>
-                        <button class="btn btn-danger" (click)="(post.id)">Delete</button>
+                        <button class="btn btn-danger" (click)="deletePost(post.id)">Delete</button>
                     </div>
                 </td>
             </tr>
             }
     </table>
-
 </div>
+
