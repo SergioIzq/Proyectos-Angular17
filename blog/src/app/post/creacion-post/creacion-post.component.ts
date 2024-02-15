@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { PostService } from '../post.service';
@@ -8,7 +8,7 @@ import { Post } from '../post';
 @Component({
   selector: 'app-creacion-post',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, FormsModule, ReactiveFormsModule, RouterLink, RouterLinkActive],
+  imports: [CommonModule, RouterOutlet, ReactiveFormsModule, RouterLink, RouterLinkActive],
   templateUrl: './creacion-post.component.html',
   styleUrls: ['./creacion-post.component.css']
 })
