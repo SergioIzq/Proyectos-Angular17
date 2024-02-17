@@ -1,0 +1,30 @@
+.table-container {
+    overflow-x: auto; /* Permite desplazamiento horizontal si el contenido es demasiado ancho */
+}
+
+.table-container table {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    border-collapse: collapse; /* Fusiona los bordes de las celdas */
+}
+
+.table-container th, .table-container td {
+    padding: 8px; /* Espaciado interno de las celdas */
+    border: 1px solid #ddd; /* Borde de las celdas */
+    text-align: left; /* Alineación del texto a la izquierda */
+}
+
+.table-container th {
+    background-color: #f2f2f2; /* Color de fondo para las cabeceras */
+}
+
+.table-container tr:nth-child(even) {
+    background-color: #f2f2f2; /* Color de fondo para filas pares */
+}
+
+.table-container tr:hover {
+    background-color: #ddd; /* Cambia el color de fondo al pasar el ratón sobre la fila */
+}
+
+.table-container img {
+    display: block; /* Evita el espacio adicional debajo de las imágenes */
+}

@@ -1,0 +1,40 @@
+<div class="table-container table-hover">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Icono</th>
+        <th>Bandera</th>
+        <th>Nombre</th>
+        <th>Capital</th>
+        <th>Población</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let country of countries; let i = index">
+        <!-- Número de fila -->
+        <td>{{ i + 1 }}</td>
+
+        <!-- Escudo de armas -->
+        <td><img [src]="country.coatOfArms.svg" alt="Escudo de armas de {{ country.name.common }}" width="50"
+            height="30"></td>
+
+        <!-- Bandera -->
+        <td><img [src]="country.flags.png" alt="Bandera de {{ country.name.common }}" width="50" height="30"></td>
+
+        <!-- Nombre del país -->
+        <td>{{ country.name.common }}</td>
+
+        <!-- Capital del país -->
+        <td>{{ country.capital }}</td>
+
+        <!-- Población del país -->
+        <td>{{ country.population }}</td>
+
+        <!-- Enlace para ver más detalles del país -->
+        <td><a [routerLink]="['/countries/country', country.cca3]" routerLinkActive="active">Ver más...</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

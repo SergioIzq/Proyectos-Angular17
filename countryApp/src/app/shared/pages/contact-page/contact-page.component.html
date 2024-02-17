@@ -1,1 +1,40 @@
-<p>contact-page works!</p>
+<div class="container">
+    <h2>Contacto</h2>
+    <div class="formulario-contacto"> <!-- Añadido div con la clase formulario-contacto -->
+        <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+
+            <div class="grupo-input1">
+
+                <label>Nombre</label>
+
+                <input type="text" formControlName="nombre" name="nombreInput" class="input-form" id="nombre"
+                    [ngClass]="{ 'is-valid': !f['nombre'].errors && (f['nombre'].dirty || f['nombre'].touched), 'is-invalid': f['nombre'].errors && (f['nombre'].dirty || f['nombre'].touched) }"
+                    autocomplete />
+
+
+                <div class="invalid-feedback" *ngIf="f['nombre'].invalid && (f['nombre'].dirty || f['nombre'].touched)">
+                    <div *ngIf="f['nombre']?.errors?.['required']">
+                        El nombre es obligatorio
+                    </div>
+                </div>
+            </div>
+
+            <div class="grupo-input2">
+                <label>Número de teléfono</label>
+
+                <input type="tel" formControlName="tel" name="telInput" class="input-form" id="tel"
+                    [ngClass]="{ 'is-valid': !f['tel'].errors && (f['tel'].dirty || f['tel'].touched), 'is-invalid': f['tel'].errors && (f['tel'].dirty || f['tel'].touched) }"
+                    autocomplete />
+
+                <div class="invalid-feedback" *ngIf="f['tel'].invalid && (f['tel'].dirty || f['tel'].touched)">
+                    <div *ngIf="f['tel']?.errors?.['required']">
+                        El teléfono es requerido
+                    </div>
+                </div>
+            </div>
+            <div class="boton-submit">
+                <button type="submit" [disabled]="registerForm.invalid" class="btn-submit">Enviar</button> <!-- Cambiado de btn btn-primary a btn-submit -->
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search-box',
@@ -9,4 +9,11 @@ import { Component, Input } from '@angular/core';
 })
 export class SearchBoxComponent {
   @Input() placeholder: string = "";
+  input: string = "";
+  @Output() propagar = new EventEmitter<string>();
+
+  OnPropagate($event: any) {
+    const inputValue = $event.target.value;
+    this.propagar.emit(inputValue);
+  }
 }
